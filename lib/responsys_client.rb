@@ -191,6 +191,7 @@ module SunDawg
         begin
           yield
         rescue SOAP::FaultError => e
+          debugger
           inner_e = e.detail[e.faultstring.data]
           raise inner_e if inner_e
           raise e
