@@ -8,9 +8,11 @@ class ResponsysClientIntegrationTest < Test::Unit::TestCase
   LIST_NAME = "GemList"
   EMAIL = "gem.test@responsys.client.gem.com"
   INTEGRATION = true
+  CONFIG_FILE_PATH = "test/config.yml"
 
   def setup
-    config = YAML.load_file("test/config.yml")
+    raise "Missing test/config.yml.  See test/config.yml.sample" unless File.exist?(CONFIG_FILE_PATH)
+    config = YAML.load_file(CONFIG_FILE_PATH)
     @username = config["username"]
     @password = config["password"]
     @file_handle = File.open('/tmp/wiredump', 'w')
