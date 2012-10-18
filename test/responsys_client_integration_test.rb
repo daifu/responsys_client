@@ -7,7 +7,6 @@ class ResponsysClientIntegrationTest < Test::Unit::TestCase
   CAMPAIGN_TRANSACTION_NAME = "GemTransactionalEmail"
   LIST_NAME = "GemList"
   EMAIL = "gem.test@responsys.client.gem.com"
-  INTEGRATION = true
   CONFIG_FILE_PATH = "test/config.yml"
 
   def setup
