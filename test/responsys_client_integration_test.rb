@@ -6,6 +6,7 @@ class ResponsysClientIntegrationTest < Test::Unit::TestCase
   CAMPAIGN_NAME = "GemCampaignEmail"
   CAMPAIGN_TRANSACTION_NAME = "GemTransactionalEmail"
   LIST_NAME = "GemList"
+
   EMAIL = "gem.test@responsys.client.gem.com"
   CONFIG_FILE_PATH = "test/config.yml"
 
@@ -64,6 +65,32 @@ class ResponsysClientIntegrationTest < Test::Unit::TestCase
       assert response.result
       results = @client.list_folders
       assert results.map { |i| i.name }.include? folder_name
+    end
+
+    # This assumes you have a supplemental table called gem_FirstVideoEmail in the Test_Gem list with this schema:
+    # FIRST_VIDEO_CREATED_DT Timestamp
+    # FIRST_VIDEO_SHARED_DT Timestamp
+    # FIRST_VIDEO_URL String (500)
+    # CUSTOMER_ID Integer (Primary Key)
+    def test_save_supplemental_table
+      member = {
+        'JPJ_1' => 'I am a donkey',
+        'JPJ_2' => 'But I love you'
+      }
+      begin
+        response = @client.save_supplemental_table(FOLDER_NAME, 'gem_jpj', [member], 'jpj_1')
+      rescue SOAP::FaultError => e
+        puts "JPJ soap error: #{e.inspect}"
+        puts "JPj faultstr: #{e.faultstring.inspect}"
+        inner_e = e.detail[e.faultstring.data]
+        puts "JPJ rescued e: #{inner_e.inspect}"
+        puts "JPJ response exception code #{inner_e.exceptionCode}"
+        puts "JPJ response exception msg #{inner_e.exceptionMessage}"
+        raise inner_e
+      end
+
+      puts "JPJ response #{response.inspect}"
+      assert response.result
     end
 
     def test_save_members
