@@ -1,4 +1,3 @@
-$LOAD_PATH.unshift '/Users/jjolma/depot/responsys_client/lib'
 require 'test_helper'
 require 'responsys_client'
 
