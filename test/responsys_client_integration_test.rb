@@ -77,19 +77,7 @@ class ResponsysClientIntegrationTest < Test::Unit::TestCase
         'JPJ_1' => 'I am a donkey',
         'JPJ_2' => 'But I love you'
       }
-      begin
-        response = @client.save_supplemental_table(FOLDER_NAME, 'gem_jpj', [member], 'jpj_1')
-      rescue SOAP::FaultError => e
-        puts "JPJ soap error: #{e.inspect}"
-        puts "JPj faultstr: #{e.faultstring.inspect}"
-        inner_e = e.detail[e.faultstring.data]
-        puts "JPJ rescued e: #{inner_e.inspect}"
-        puts "JPJ response exception code #{inner_e.exceptionCode}"
-        puts "JPJ response exception msg #{inner_e.exceptionMessage}"
-        raise inner_e
-      end
-
-      puts "JPJ response #{response.inspect}"
+      response = @client.save_supplemental_table(FOLDER_NAME, 'gem_jpj', [member], 'JPJ_1')
       assert response.result
     end
 

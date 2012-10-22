@@ -97,31 +97,33 @@ module SunDawg
         # TODO raise if > 200 records
         # TODO if empty members
 
-        table = InteractObject.new
-        table.folderName = folder_name
-        table.objectName = list_name
+        with_session do
+          table = InteractObject.new
+          table.folderName = folder_name
+          table.objectName = list_name
 
-        match_column_names = [match_column_name.to_s]
+          match_column_names = [match_column_name.to_s]
 
-        record_data = RecordData.new
+          record_data = RecordData.new
 
-        record_data.fieldNames = members.first.keys.map { |f| f.to_s.upcase }
-        record_data.records = []
+          record_data.fieldNames = members.first.keys.map { |f| f.to_s.upcase }
+          record_data.records = []
 
-        members.each do |member|
-          record = []
-          record_data.fieldNames.each do |field|
-            record << member[field]
+          members.each do |member|
+            record = []
+            record_data.fieldNames.each do |field|
+              record << member[field]
+            end
+            record_data.records << record
           end
-          record_data.records << record
+
+          records = MergeTableRecords.new
+          records.table = table
+          records.recordData = record_data
+          records.matchColumnNames = match_column_names
+
+          @responsys_client.mergeTableRecords(records)
         end
-
-        records = MergeTableRecords.new
-        records.table = table
-        records.recordData = record_data
-        records.matchColumnNames = match_column_names
-
-       @responsys_client.mergeTableRecords(records)
       end
 
       def save_members(folder_name, list_name, members, attributes = SunDawg::Responsys::Member.fields)
