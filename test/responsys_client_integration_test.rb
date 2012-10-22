@@ -1,3 +1,4 @@
+$LOAD_PATH.unshift '/Users/jjolma/depot/responsys_client/lib'
 require 'test_helper'
 require 'responsys_client'
 
@@ -78,6 +79,16 @@ class ResponsysClientIntegrationTest < Test::Unit::TestCase
         'JPJ_2' => 'But I love you'
       }
       response = @client.save_supplemental_table(FOLDER_NAME, 'gem_jpj', [member], 'JPJ_1')
+      assert response.result
+    end
+
+    def test_save_supplemental_table_with_pk
+      rando = rand(100)
+      member = {
+        'JPJ_1' => "I am a donkey",
+        'JPJ_2' => "But I love you #{rando}"
+      }
+      response = @client.save_supplemental_table_with_pk(FOLDER_NAME, 'gem_jpj', [member])
       assert response.result
     end
 
