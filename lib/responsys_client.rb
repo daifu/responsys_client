@@ -92,40 +92,6 @@ module SunDawg
         end
       end
 
-      def save_supplemental_table(folder_name, list_name, members, match_column_name)
-        # TODO validate folder_name, list_name
-        # TODO raise if > 200 records
-        # TODO if empty members
-
-        with_session do
-          table = InteractObject.new
-          table.folderName = folder_name
-          table.objectName = list_name
-
-          match_column_names = [match_column_name.to_s]
-
-          record_data = RecordData.new
-
-          record_data.fieldNames = members.first.keys.map { |f| f.to_s.upcase }
-          record_data.records = []
-
-          members.each do |member|
-            record = []
-            record_data.fieldNames.each do |field|
-              record << member[field]
-            end
-            record_data.records << record
-          end
-
-          records = MergeTableRecords.new
-          records.table = table
-          records.recordData = record_data
-          records.matchColumnNames = match_column_names
-
-          @responsys_client.mergeTableRecords(records)
-        end
-      end
-
       def save_supplemental_table_with_pk(folder_name, list_name, members)
         # TODO error handling
         with_session do
