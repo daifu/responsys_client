@@ -93,7 +93,6 @@ module SunDawg
       end
 
       def save_supplemental_table_with_pk(folder_name, list_name, members)
-        # TODO error handling
         with_session do
           table = InteractObject.new
           table.folderName = folder_name
