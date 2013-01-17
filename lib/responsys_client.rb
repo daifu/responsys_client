@@ -1,4 +1,5 @@
 require 'rubygems'
+require 'ruby-debug'
 require 'member'
 gem 'soap4r'
 require 'stub/defaultDriver.rb'
