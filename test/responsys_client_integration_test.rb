@@ -82,7 +82,7 @@ class ResponsysClientIntegrationTest < Test::Unit::TestCase
       assert_equal '', result.errorMessage
     end
     
-    # This assumes you have a Porfile Extensions Table called gem_fire in the Test_Gem folder.
+    # This assumes you have a Profile Extension Table (PET) called gem_fire in the Test_Gem folder.
     # This also assumes that RIID_ is the match column for Test_Gem. The value for RIID_ should 
     # be incordance to that of in the corresponding Profile List for Test_Gem. 
     # JPJ_1 Text Field
