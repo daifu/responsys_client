@@ -95,8 +95,33 @@ class ResponsysClientIntegrationTest < Test::Unit::TestCase
       }   
       response = @client.save_profile_extension_table(FOLDER_NAME, 'gem_fire', [member], 'RIID' ) 
       result = response.recipientResult
-      response.each{ |res| assert_equal '', res.errorMessage } 
+      response.each{ |res| assert_equal '', res.errorMessage }
     end 
+
+    def test_too_many_members_error_suplemental_table
+      members = 202.times.map do |i|
+        {
+          'JPJ_1' => "#{i}",
+          'JPJ_2' => "James #{i}"
+        }   
+      end 
+      assert_raise SunDawg::Responsys::ResponsysClient::TooManyMembersError do 
+        response = @client.save_supplemental_table_with_pk(FOLDER_NAME, 'gem_jpj', members)
+      end
+    end 
+  
+    def test_too_many_members_error_profile_extension_table
+      members = 202.times.map do |i|
+        {
+          'RIID' => '7418814',
+          'JPJ_2' => "James #{i}",
+          'JPJ_1' => "#{i}"
+        }
+      end
+      assert_raise SunDawg::Responsys::ResponsysClient::TooManyMembersError do  
+        response = @client.save_profile_extension_table(FOLDER_NAME, 'gem_fire', members, 'RIID')
+      end
+    end
 
     def test_save_members
       SunDawg::Responsys::Member.add_field :customer_id, true
