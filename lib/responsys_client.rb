@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'member'
-gem 'soap4r'
+gem 'soap4r-spox'
 require 'stub/defaultDriver.rb'
 require 'stub/defaultMappingRegistry.rb'
 
@@ -30,7 +30,7 @@ module SunDawg
       # <options...> - Hash of additional options
       #   :keep_alive => true|false - (Default=false) Keep session alive for multiple requests
       #   :timeout_threshold => Seconds (Default=180) Length of time to timeout a request
-      #   :wiredump_dev => IO - Dump all messages (reply and responses) to IO 
+      #   :wiredump_dev => IO - Dump all messages (reply and responses) to IO
       #
       def initialize(username, password, options = {})
         @username = username
@@ -40,7 +40,7 @@ module SunDawg
         @responsys_client.wiredump_dev = options[:wiredump_dev] if options[:wiredump_dev]
 
         self.timeout_threshold = options[:timeout_threshold] || 180
-      end 
+      end
 
       def timeout_threshold=(secs)
         # Sets the timeout on the internal responsys http client according
@@ -68,19 +68,19 @@ module SunDawg
         session_header_request.sessionId = @session_id
         @responsys_client.headerhandler.add session_header_request
       end
-      
+
       def logout
         begin
           logout_request = Logout.new
           @responsys_client.logout logout_request
         ensure
-          @session_id = nil 
+          @session_id = nil
         end
       end
 
       def list_folders
         with_session do
-          @responsys_client.listFolders ListFolders.new 
+          @responsys_client.listFolders ListFolders.new
         end
       end
 
@@ -99,12 +99,12 @@ module SunDawg
           table.folderName = folder_name
           table.objectName = list_name
           record_data = RecordData.new
-          record_data.fieldNames = members.first.keys 
+          record_data.fieldNames = members.first.keys
           record_data.records = members.map do |member|
-            record_data.fieldNames.map do |field| 
+            record_data.fieldNames.map do |field|
               member[field]
-            end 
-          end 
+            end
+          end
           insert_on_no_match = true
           update_on_match = UpdateOnMatch::REPLACE_ALL
           merge = MergeTableRecordsWithPK.new(table, record_data, insert_on_no_match, update_on_match)
@@ -119,9 +119,9 @@ module SunDawg
           table.folderName = folder_name
           table.objectName = list_name
           record_data = RecordData.new
-          record_data.fieldNames = members.first.keys 
+          record_data.fieldNames = members.first.keys
           record_data.records = members.map do |member|
-            record_data.fieldNames.map do |field| 
+            record_data.fieldNames.map do |field|
               member[field]
             end
           end
@@ -130,7 +130,7 @@ module SunDawg
           update_on_match = UpdateOnMatch::REPLACE_ALL
           merge = MergeIntoProfileExtension.new(table, record_data, query_column, insert_on_no_match, update_on_match)
           @responsys_client.mergeIntoProfileExtension(merge)
-        end 
+        end
       end
 
 
@@ -166,8 +166,8 @@ module SunDawg
         with_session do
           launch_campaign = LaunchCampaign.new
           interact_object = InteractObject.new
-          interact_object.folderName = folder_name 
-          interact_object.objectName = campaign_name 
+          interact_object.folderName = folder_name
+          interact_object.objectName = campaign_name
           launch_campaign.campaign = interact_object
           @responsys_client.launchCampaign launch_campaign
         end
@@ -205,7 +205,7 @@ module SunDawg
             optional_data = OptionalData.new
             optional_data.name = k
             v.gsub!(/[[:cntrl:]]/, ' ') if v.is_a? String
-            optional_data.value = v 
+            optional_data.value = v
             recipient_data.optionalData << optional_data
           end
 
@@ -235,7 +235,7 @@ module SunDawg
           end
         ensure
           with_timeout do
-            logout unless @keep_alive 
+            logout unless @keep_alive
           end
         end
       end
