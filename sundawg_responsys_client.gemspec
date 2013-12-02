@@ -25,16 +25,13 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<soap4r>, [">= 1.5.8"])
-      s.add_runtime_dependency(%q<csv>)
       s.add_development_dependency(%q<mocha>, [">= 0.9.12"])
     else
       s.add_dependency(%q<soap4r>, [">= 1.5.8"])
-      s.add_runtime_dependency(%q<csv>)
       s.add_dependency(%q<mocha>, [">= 0.9.12"])
     end
   else
     s.add_dependency(%q<soap4r>, [">= 1.5.8"])
-    s.add_runtime_dependency(%q<csv>)
     s.add_dependency(%q<mocha>, [">= 0.9.12"])
   end
 end
