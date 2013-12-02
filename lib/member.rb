@@ -1,4 +1,4 @@
-require 'fastercsv'
+require 'csv'
 
 module SunDawg
   module Responsys
@@ -59,7 +59,7 @@ module SunDawg
         # Parses the response CSV file from Responys
         def parse_feedback_csv(file_name)
           results = {}
-          csv = FasterCSV.read(file_name)
+          csv = CSV.read(file_name)
           headers = csv.first
           csv.shift
           csv.each do |row|
@@ -80,7 +80,7 @@ module SunDawg
         def import_file(file_name)
           members = []
           headers = nil
-          table = FasterCSV.read(file_name)
+          table = CSV.read(file_name)
           table.each do |row|
             if headers.nil?
               headers = row
@@ -181,7 +181,7 @@ module SunDawg
         end
 
         def build_csv_file(members, file_name, attributes, headers, access = "w")
-          FasterCSV.open(file_name, access) do |csv|
+          CSV.open(file_name, access) do |csv|
             csv << responsys_fields(attributes) if headers
             members.each do |member|
               csv << member.values(attributes)

@@ -1,5 +1,5 @@
 require 'test/unit'
 require 'rubygems'
-require 'mocha'
+require 'mocha/setup'
 
 INTEGRATION = ENV['INTEGRATION'] unless defined?(INTEGRATION)
