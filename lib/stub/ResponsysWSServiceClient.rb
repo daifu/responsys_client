@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require 'defaultDriver.rb'
+require 'stub/defaultDriver.rb'
 
 endpoint_url = ARGV.shift
 obj = ResponsysWS.new(endpoint_url)
@@ -118,22 +118,6 @@ parameters = nil
 puts obj.listFolders(parameters)
 
 # SYNOPSIS
-#   listFolderObjects(parameters)
-#
-# ARGS
-#   parameters      ListFolderObjects - {urn:ws.rsys.com}listFolderObjects
-#
-# RETURNS
-#   parameters      ListFolderObjectsResponse - {urn:ws.rsys.com}listFolderObjectsResponse
-#
-# RAISES
-#   fault           FolderFault - {urn:fault.ws.rsys.com}FolderFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.listFolderObjects(parameters)
-
-# SYNOPSIS
 #   triggerCampaignMessage(parameters)
 #
 # ARGS
@@ -143,11 +127,44 @@ puts obj.listFolderObjects(parameters)
 #   parameters      TriggerCampaignMessageResponse - {urn:ws.rsys.com}triggerCampaignMessageResponse
 #
 # RAISES
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
 #   fault           TriggeredMessageFault - {urn:fault.ws.rsys.com}TriggeredMessageFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
 #
 parameters = nil
 puts obj.triggerCampaignMessage(parameters)
+
+# SYNOPSIS
+#   haMergeTriggerEmail(parameters)
+#
+# ARGS
+#   parameters      HaMergeTriggerEmail - {urn:ws.rsys.com}HaMergeTriggerEmail
+#
+# RETURNS
+#   parameters      HaMergeTriggerEmailResponse - {urn:ws.rsys.com}HaMergeTriggerEmailResponse
+#
+# RAISES
+#   fault           TriggeredMessageFault - {urn:fault.ws.rsys.com}TriggeredMessageFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
+#   fault           UnrecoverableErrorFault - {urn:fault.ws.rsys.com}UnrecoverableErrorFault
+#
+parameters = nil
+puts obj.haMergeTriggerEmail(parameters)
+
+# SYNOPSIS
+#   mergeTriggerEmail(parameters)
+#
+# ARGS
+#   parameters      MergeTriggerEmail - {urn:ws.rsys.com}mergeTriggerEmail
+#
+# RETURNS
+#   parameters      MergeTriggerEmailResponse - {urn:ws.rsys.com}mergeTriggerEmailResponse
+#
+# RAISES
+#   fault           TriggeredMessageFault - {urn:fault.ws.rsys.com}TriggeredMessageFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
+#
+parameters = nil
+puts obj.mergeTriggerEmail(parameters)
 
 # SYNOPSIS
 #   triggerCustomEvent(parameters)
@@ -164,54 +181,6 @@ puts obj.triggerCampaignMessage(parameters)
 #
 parameters = nil
 puts obj.triggerCustomEvent(parameters)
-
-# SYNOPSIS
-#   createCampaign(parameters)
-#
-# ARGS
-#   parameters      CreateCampaign - {urn:ws.rsys.com}createCampaign
-#
-# RETURNS
-#   parameters      CreateCampaignResponse - {urn:ws.rsys.com}createCampaignResponse
-#
-# RAISES
-#   fault           CampaignFault - {urn:fault.ws.rsys.com}CampaignFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.createCampaign(parameters)
-
-# SYNOPSIS
-#   setCampaignProperties(parameters)
-#
-# ARGS
-#   parameters      SetCampaignProperties - {urn:ws.rsys.com}setCampaignProperties
-#
-# RETURNS
-#   parameters      SetCampaignPropertiesResponse - {urn:ws.rsys.com}setCampaignPropertiesResponse
-#
-# RAISES
-#   fault           CampaignFault - {urn:fault.ws.rsys.com}CampaignFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.setCampaignProperties(parameters)
-
-# SYNOPSIS
-#   getCampaignProperties(parameters)
-#
-# ARGS
-#   parameters      GetCampaignProperties - {urn:ws.rsys.com}getCampaignProperties
-#
-# RETURNS
-#   parameters      GetCampaignPropertiesResponse - {urn:ws.rsys.com}getCampaignPropertiesResponse
-#
-# RAISES
-#   fault           CampaignFault - {urn:fault.ws.rsys.com}CampaignFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.getCampaignProperties(parameters)
 
 # SYNOPSIS
 #   launchCampaign(parameters)
@@ -262,150 +231,6 @@ parameters = nil
 puts obj.getLaunchStatus(parameters)
 
 # SYNOPSIS
-#   getCampaignId(parameters)
-#
-# ARGS
-#   parameters      GetCampaignId - {urn:ws.rsys.com}getCampaignId
-#
-# RETURNS
-#   parameters      GetCampaignIdResponse - {urn:ws.rsys.com}getCampaignIdResponse
-#
-# RAISES
-#   fault           CampaignFault - {urn:fault.ws.rsys.com}CampaignFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.getCampaignId(parameters)
-
-# SYNOPSIS
-#   deleteCampaign(parameters)
-#
-# ARGS
-#   parameters      DeleteCampaign - {urn:ws.rsys.com}deleteCampaign
-#
-# RETURNS
-#   parameters      DeleteCampaignResponse - {urn:ws.rsys.com}deleteCampaignResponse
-#
-# RAISES
-#   fault           CampaignFault - {urn:fault.ws.rsys.com}CampaignFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.deleteCampaign(parameters)
-
-# SYNOPSIS
-#   getLaunchesForCampaign(parameters)
-#
-# ARGS
-#   parameters      GetLaunchesForCampaign - {urn:ws.rsys.com}getLaunchesForCampaign
-#
-# RETURNS
-#   parameters      GetLaunchesForCampaignResponse - {urn:ws.rsys.com}getLaunchesForCampaignResponse
-#
-# RAISES
-#   fault           CampaignFault - {urn:fault.ws.rsys.com}CampaignFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.getLaunchesForCampaign(parameters)
-
-# SYNOPSIS
-#   getOpenLaunches(parameters)
-#
-# ARGS
-#   parameters      GetOpenLaunches - {urn:ws.rsys.com}getOpenLaunches
-#
-# RETURNS
-#   parameters      GetOpenLaunchesResponse - {urn:ws.rsys.com}getOpenLaunchesResponse
-#
-# RAISES
-#   fault           AccountFault - {urn:fault.ws.rsys.com}AccountFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.getOpenLaunches(parameters)
-
-# SYNOPSIS
-#   closeCampaign(parameters)
-#
-# ARGS
-#   parameters      CloseCampaign - {urn:ws.rsys.com}closeCampaign
-#
-# RETURNS
-#   parameters      CloseCampaignResponse - {urn:ws.rsys.com}closeCampaignResponse
-#
-# RAISES
-#   fault           CampaignFault - {urn:fault.ws.rsys.com}CampaignFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.closeCampaign(parameters)
-
-# SYNOPSIS
-#   unscheduleCampaignLaunch(parameters)
-#
-# ARGS
-#   parameters      UnscheduleCampaignLaunch - {urn:ws.rsys.com}unscheduleCampaignLaunch
-#
-# RETURNS
-#   parameters      UnscheduleCampaignLaunchResponse - {urn:ws.rsys.com}unscheduleCampaignLaunchResponse
-#
-# RAISES
-#   fault           CampaignFault - {urn:fault.ws.rsys.com}CampaignFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.unscheduleCampaignLaunch(parameters)
-
-# SYNOPSIS
-#   createList(parameters)
-#
-# ARGS
-#   parameters      CreateList - {urn:ws.rsys.com}createList
-#
-# RETURNS
-#   parameters      CreateListResponse - {urn:ws.rsys.com}createListResponse
-#
-# RAISES
-#   fault           ListFault - {urn:fault.ws.rsys.com}ListFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.createList(parameters)
-
-# SYNOPSIS
-#   changeListSchema(parameters)
-#
-# ARGS
-#   parameters      ChangeListSchema - {urn:ws.rsys.com}changeListSchema
-#
-# RETURNS
-#   parameters      ChangeListSchemaResponse - {urn:ws.rsys.com}changeListSchemaResponse
-#
-# RAISES
-#   fault           ListFault - {urn:fault.ws.rsys.com}ListFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.changeListSchema(parameters)
-
-# SYNOPSIS
-#   deleteList(parameters)
-#
-# ARGS
-#   parameters      DeleteList - {urn:ws.rsys.com}deleteList
-#
-# RETURNS
-#   parameters      DeleteListResponse - {urn:ws.rsys.com}deleteListResponse
-#
-# RAISES
-#   fault           ListFault - {urn:fault.ws.rsys.com}ListFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.deleteList(parameters)
-
-# SYNOPSIS
 #   mergeListMembers(parameters)
 #
 # ARGS
@@ -454,20 +279,20 @@ parameters = nil
 puts obj.deleteListMembers(parameters)
 
 # SYNOPSIS
-#   getUpdated(parameters)
+#   deleteProfileExtensionMembers(parameters)
 #
 # ARGS
-#   parameters      GetUpdated - {urn:ws.rsys.com}getUpdated
+#   parameters      DeleteProfileExtensionMembers - {urn:ws.rsys.com}deleteProfileExtensionMembers
 #
 # RETURNS
-#   parameters      GetUpdatedResponse - {urn:ws.rsys.com}getUpdatedResponse
+#   parameters      DeleteProfileExtensionMembersResponse - {urn:ws.rsys.com}deleteProfileExtensionMembersResponse
 #
 # RAISES
-#   fault           ListFault - {urn:fault.ws.rsys.com}ListFault
+#   fault           ListExtensionFault - {urn:fault.ws.rsys.com}ListExtensionFault
 #   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
 #
 parameters = nil
-puts obj.getUpdated(parameters)
+puts obj.deleteProfileExtensionMembers(parameters)
 
 # SYNOPSIS
 #   createTable(parameters)
@@ -500,22 +325,6 @@ puts obj.createTable(parameters)
 #
 parameters = nil
 puts obj.deleteTable(parameters)
-
-# SYNOPSIS
-#   changeTableSchema(parameters)
-#
-# ARGS
-#   parameters      ChangeTableSchema - {urn:ws.rsys.com}changeTableSchema
-#
-# RETURNS
-#   parameters      ChangeTableSchemaResponse - {urn:ws.rsys.com}changeTableSchemaResponse
-#
-# RAISES
-#   fault           TableFault - {urn:fault.ws.rsys.com}TableFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.changeTableSchema(parameters)
 
 # SYNOPSIS
 #   mergeTableRecords(parameters)
@@ -580,102 +389,6 @@ puts obj.deleteTableRecords(parameters)
 #
 parameters = nil
 puts obj.truncateTable(parameters)
-
-# SYNOPSIS
-#   createSQLView(parameters)
-#
-# ARGS
-#   parameters      CreateSQLView - {urn:ws.rsys.com}createSQLView
-#
-# RETURNS
-#   parameters      CreateSQLViewResponse - {urn:ws.rsys.com}createSQLViewResponse
-#
-# RAISES
-#   fault           TableFault - {urn:fault.ws.rsys.com}TableFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.createSQLView(parameters)
-
-# SYNOPSIS
-#   createLinkTable(parameters)
-#
-# ARGS
-#   parameters      CreateLinkTable - {urn:ws.rsys.com}createLinkTable
-#
-# RETURNS
-#   parameters      CreateLinkTableResponse - {urn:ws.rsys.com}createLinkTableResponse
-#
-# RAISES
-#   fault           LinkTableFault - {urn:fault.ws.rsys.com}LinkTableFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.createLinkTable(parameters)
-
-# SYNOPSIS
-#   deleteLinkTable(parameters)
-#
-# ARGS
-#   parameters      DeleteLinkTable - {urn:ws.rsys.com}deleteLinkTable
-#
-# RETURNS
-#   parameters      DeleteLinkTableResponse - {urn:ws.rsys.com}deleteLinkTableResponse
-#
-# RAISES
-#   fault           LinkTableFault - {urn:fault.ws.rsys.com}LinkTableFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.deleteLinkTable(parameters)
-
-# SYNOPSIS
-#   mergeLinkRecords(parameters)
-#
-# ARGS
-#   parameters      MergeLinkRecords - {urn:ws.rsys.com}mergeLinkRecords
-#
-# RETURNS
-#   parameters      MergeLinkRecordsResponse - {urn:ws.rsys.com}mergeLinkRecordsResponse
-#
-# RAISES
-#   fault           LinkTableFault - {urn:fault.ws.rsys.com}LinkTableFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.mergeLinkRecords(parameters)
-
-# SYNOPSIS
-#   retrieveLinkRecords(parameters)
-#
-# ARGS
-#   parameters      RetrieveLinkRecords - {urn:ws.rsys.com}retrieveLinkRecords
-#
-# RETURNS
-#   parameters      RetrieveLinkRecordsResponse - {urn:ws.rsys.com}retrieveLinkRecordsResponse
-#
-# RAISES
-#   fault           LinkTableFault - {urn:fault.ws.rsys.com}LinkTableFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.retrieveLinkRecords(parameters)
-
-# SYNOPSIS
-#   deleteLinkRecords(parameters)
-#
-# ARGS
-#   parameters      DeleteLinkRecords - {urn:ws.rsys.com}deleteLinkRecords
-#
-# RETURNS
-#   parameters      DeleteLinkRecordsResponse - {urn:ws.rsys.com}deleteLinkRecordsResponse
-#
-# RAISES
-#   fault           LinkTableFault - {urn:fault.ws.rsys.com}LinkTableFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.deleteLinkRecords(parameters)
 
 # SYNOPSIS
 #   createDocument(parameters)
@@ -774,149 +487,6 @@ parameters = nil
 puts obj.getDocumentContent(parameters)
 
 # SYNOPSIS
-#   copy(parameters)
-#
-# ARGS
-#   parameters      Copy - {urn:ws.rsys.com}copy
-#
-# RETURNS
-#   parameters      CopyResponse - {urn:ws.rsys.com}copyResponse
-#
-# RAISES
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#   fault           ObjectFault - {urn:fault.ws.rsys.com}ObjectFault
-#
-parameters = nil
-puts obj.copy(parameters)
-
-# SYNOPSIS
-#   move(parameters)
-#
-# ARGS
-#   parameters      Move - {urn:ws.rsys.com}move
-#
-# RETURNS
-#   parameters      MoveResponse - {urn:ws.rsys.com}moveResponse
-#
-# RAISES
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#   fault           ObjectFault - {urn:fault.ws.rsys.com}ObjectFault
-#
-parameters = nil
-puts obj.move(parameters)
-
-# SYNOPSIS
-#   getServerTimestamp(parameters)
-#
-# ARGS
-#   parameters      GetServerTimestamp - {urn:ws.rsys.com}getServerTimestamp
-#
-# RETURNS
-#   parameters      GetServerTimestampResponse - {urn:ws.rsys.com}getServerTimestampResponse
-#
-# RAISES
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.getServerTimestamp(parameters)
-
-# SYNOPSIS
-#   describeObjects(parameters)
-#
-# ARGS
-#   parameters      DescribeObjects - {urn:ws.rsys.com}describeObjects
-#
-# RETURNS
-#   parameters      DescribeObjectsResponse - {urn:ws.rsys.com}describeObjectsResponse
-#
-# RAISES
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#   fault           ObjectFault - {urn:fault.ws.rsys.com}ObjectFault
-#
-parameters = nil
-puts obj.describeObjects(parameters)
-
-# SYNOPSIS
-#   runJob(parameters)
-#
-# ARGS
-#   parameters      RunJob - {urn:ws.rsys.com}runJob
-#
-# RETURNS
-#   parameters      RunJobResponse - {urn:ws.rsys.com}runJobResponse
-#
-# RAISES
-#   fault           ConnectFault - {urn:fault.ws.rsys.com}ConnectFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.runJob(parameters)
-
-# SYNOPSIS
-#   getJobRunStatus(parameters)
-#
-# ARGS
-#   parameters      GetJobRunStatus - {urn:ws.rsys.com}getJobRunStatus
-#
-# RETURNS
-#   parameters      GetJobRunStatusResponse - {urn:ws.rsys.com}getJobRunStatusResponse
-#
-# RAISES
-#   fault           ConnectFault - {urn:fault.ws.rsys.com}ConnectFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.getJobRunStatus(parameters)
-
-# SYNOPSIS
-#   getJobs(parameters)
-#
-# ARGS
-#   parameters      GetJobs - {urn:ws.rsys.com}getJobs
-#
-# RETURNS
-#   parameters      GetJobsResponse - {urn:ws.rsys.com}getJobsResponse
-#
-# RAISES
-#   fault           ConnectFault - {urn:fault.ws.rsys.com}ConnectFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.getJobs(parameters)
-
-# SYNOPSIS
-#   getJobRuns(parameters)
-#
-# ARGS
-#   parameters      GetJobRuns - {urn:ws.rsys.com}getJobRuns
-#
-# RETURNS
-#   parameters      GetJobRunsResponse - {urn:ws.rsys.com}getJobRunsResponse
-#
-# RAISES
-#   fault           ConnectFault - {urn:fault.ws.rsys.com}ConnectFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.getJobRuns(parameters)
-
-# SYNOPSIS
-#   getJobRunLog(parameters)
-#
-# ARGS
-#   parameters      GetJobRunLog - {urn:ws.rsys.com}getJobRunLog
-#
-# RETURNS
-#   parameters      GetJobRunLogResponse - {urn:ws.rsys.com}getJobRunLogResponse
-#
-# RAISES
-#   fault           ConnectFault - {urn:fault.ws.rsys.com}ConnectFault
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
-#
-parameters = nil
-puts obj.getJobRunLog(parameters)
-
-# SYNOPSIS
 #   mergeListMembersRIID(parameters)
 #
 # ARGS
@@ -942,10 +512,186 @@ puts obj.mergeListMembersRIID(parameters)
 #   parameters      MergeIntoProfileExtensionResponse - {urn:ws.rsys.com}mergeIntoProfileExtensionResponse
 #
 # RAISES
-#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
 #   fault           ListExtensionFault - {urn:fault.ws.rsys.com}ListExtensionFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
 #
 parameters = nil
 puts obj.mergeIntoProfileExtension(parameters)
+
+# SYNOPSIS
+#   createTableWithPK(parameters)
+#
+# ARGS
+#   parameters      CreateTableWithPK - {urn:ws.rsys.com}createTableWithPK
+#
+# RETURNS
+#   parameters      CreateTableWithPKResponse - {urn:ws.rsys.com}createTableWithPKResponse
+#
+# RAISES
+#   fault           TableFault - {urn:fault.ws.rsys.com}TableFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
+#
+parameters = nil
+puts obj.createTableWithPK(parameters)
+
+# SYNOPSIS
+#   mergeTableRecordsWithPK(parameters)
+#
+# ARGS
+#   parameters      MergeTableRecordsWithPK - {urn:ws.rsys.com}mergeTableRecordsWithPK
+#
+# RETURNS
+#   parameters      MergeTableRecordsWithPKResponse - {urn:ws.rsys.com}mergeTableRecordsWithPKResponse
+#
+# RAISES
+#   fault           TableFault - {urn:fault.ws.rsys.com}TableFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
+#
+parameters = nil
+puts obj.mergeTableRecordsWithPK(parameters)
+
+# SYNOPSIS
+#   retrieveProfileExtensionRecords(parameters)
+#
+# ARGS
+#   parameters      RetrieveProfileExtensionRecords - {urn:ws.rsys.com}retrieveProfileExtensionRecords
+#
+# RETURNS
+#   parameters      RetrieveProfileExtensionRecordsResponse - {urn:ws.rsys.com}retrieveProfileExtensionRecordsResponse
+#
+# RAISES
+#   fault           ListExtensionFault - {urn:fault.ws.rsys.com}ListExtensionFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
+#
+parameters = nil
+puts obj.retrieveProfileExtensionRecords(parameters)
+
+# SYNOPSIS
+#   listContentLibraryFolders(parameters)
+#
+# ARGS
+#   parameters      ListContentLibraryFolders - {urn:ws.rsys.com}listContentLibraryFolders
+#
+# RETURNS
+#   parameters      ListContentLibraryFoldersResponse - {urn:ws.rsys.com}listContentLibraryFoldersResponse
+#
+# RAISES
+#   fault           FolderFault - {urn:fault.ws.rsys.com}FolderFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
+#
+parameters = nil
+puts obj.listContentLibraryFolders(parameters)
+
+# SYNOPSIS
+#   doesContentLibraryFolderExist(parameters)
+#
+# ARGS
+#   parameters      DoesContentLibraryFolderExist - {urn:ws.rsys.com}doesContentLibraryFolderExist
+#
+# RETURNS
+#   parameters      DoesContentLibraryFolderExistResponse - {urn:ws.rsys.com}doesContentLibraryFolderExistResponse
+#
+# RAISES
+#   fault           FolderFault - {urn:fault.ws.rsys.com}FolderFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
+#
+parameters = nil
+puts obj.doesContentLibraryFolderExist(parameters)
+
+# SYNOPSIS
+#   deleteContentLibraryFolder(parameters)
+#
+# ARGS
+#   parameters      DeleteContentLibraryFolder - {urn:ws.rsys.com}deleteContentLibraryFolder
+#
+# RETURNS
+#   parameters      DeleteContentLibraryFolderResponse - {urn:ws.rsys.com}deleteContentLibraryFolderResponse
+#
+# RAISES
+#   fault           FolderFault - {urn:fault.ws.rsys.com}FolderFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
+#
+parameters = nil
+puts obj.deleteContentLibraryFolder(parameters)
+
+# SYNOPSIS
+#   createContentLibraryFolder(parameters)
+#
+# ARGS
+#   parameters      CreateContentLibraryFolder - {urn:ws.rsys.com}createContentLibraryFolder
+#
+# RETURNS
+#   parameters      CreateContentLibraryFolderResponse - {urn:ws.rsys.com}createContentLibraryFolderResponse
+#
+# RAISES
+#   fault           FolderFault - {urn:fault.ws.rsys.com}FolderFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
+#
+parameters = nil
+puts obj.createContentLibraryFolder(parameters)
+
+# SYNOPSIS
+#   createContentLibraryItem(parameters)
+#
+# ARGS
+#   parameters      CreateContentLibraryItem - {urn:ws.rsys.com}createContentLibraryItem
+#
+# RETURNS
+#   parameters      CreateContentLibraryItemResponse - {urn:ws.rsys.com}createContentLibraryItemResponse
+#
+# RAISES
+#   fault           DocumentFault - {urn:fault.ws.rsys.com}DocumentFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
+#
+parameters = nil
+puts obj.createContentLibraryItem(parameters)
+
+# SYNOPSIS
+#   setContentLibraryItem(parameters)
+#
+# ARGS
+#   parameters      SetContentLibraryItem - {urn:ws.rsys.com}setContentLibraryItem
+#
+# RETURNS
+#   parameters      SetContentLibraryItemResponse - {urn:ws.rsys.com}setContentLibraryItemResponse
+#
+# RAISES
+#   fault           DocumentFault - {urn:fault.ws.rsys.com}DocumentFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
+#
+parameters = nil
+puts obj.setContentLibraryItem(parameters)
+
+# SYNOPSIS
+#   deleteContentLibraryItem(parameters)
+#
+# ARGS
+#   parameters      DeleteContentLibraryItem - {urn:ws.rsys.com}deleteContentLibraryItem
+#
+# RETURNS
+#   parameters      DeleteContentLibraryItemResponse - {urn:ws.rsys.com}deleteContentLibraryItemResponse
+#
+# RAISES
+#   fault           DocumentFault - {urn:fault.ws.rsys.com}DocumentFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
+#
+parameters = nil
+puts obj.deleteContentLibraryItem(parameters)
+
+# SYNOPSIS
+#   getContentLibraryItem(parameters)
+#
+# ARGS
+#   parameters      GetContentLibraryItem - {urn:ws.rsys.com}getContentLibraryItem
+#
+# RETURNS
+#   parameters      GetContentLibraryItemResponse - {urn:ws.rsys.com}getContentLibraryItemResponse
+#
+# RAISES
+#   fault           DocumentFault - {urn:fault.ws.rsys.com}DocumentFault
+#   fault           UnexpectedErrorFault - {urn:fault.ws.rsys.com}UnexpectedErrorFault
+#
+parameters = nil
+puts obj.getContentLibraryItem(parameters)
 
 
