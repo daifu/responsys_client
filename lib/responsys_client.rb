@@ -31,6 +31,8 @@ module SunDawg
       #   :keep_alive => true|false - (Default=false) Keep session alive for multiple requests
       #   :timeout_threshold => Seconds (Default=180) Length of time to timeout a request
       #   :wiredump_dev => IO - Dump all messages (reply and responses) to IO 
+      #   :wsdl - https://ws5.responsys.net/webservices/services/ResponsysWSService?wsdl
+      #   :endpoint - https://ws5.responsys.net/webservices/services/ResponsysWSService
       #
       def initialize(username, password, options = {})
         @username = username
